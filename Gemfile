@@ -34,4 +34,4 @@ group :test do
   gem 'guard-minitest',           '2.4.6'
 end
 
-#hello, Bodya
+#hello, Bodya, blyat
