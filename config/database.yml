@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  pool: 5
+
+development:
+  <<: *default
+  database: rails_book_6_development
+
+test:
+  <<: *default
+  database: rails_book_6_test
+
+production:
+  <<: *default
+  database: rails_book_6_production
