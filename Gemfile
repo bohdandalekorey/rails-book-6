@@ -13,6 +13,7 @@ gem 'bootsnap',   '1.7.2', require: false
 gem 'rexml'
 gem 'pg'
 gem 'bootstrap-sass'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
