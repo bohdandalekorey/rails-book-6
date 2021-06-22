@@ -2,14 +2,17 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   attr_accessor :remember_token, :activation_token
+
+  has_secure_password
+
   before_save :downcase_email
+  before_save { self.email = email.downcase }
   before_create :create_activation_digest
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
              uniqueness: { case_sensitive:false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  before_save { self.email = email.downcase }
-  has_secure_password
 
   def User.digest(string) # Returns the hash digest of the given string.
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
