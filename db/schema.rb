@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(version: 2021_06_23_173234) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin", default: false
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
