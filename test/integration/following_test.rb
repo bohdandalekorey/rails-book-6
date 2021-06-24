@@ -17,7 +17,8 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'followers page' doget followers_user_path(@user)
+  test 'followers page' do
+    get followers_user_path(@user)
     assert_not @user.followers.empty?
     assert_match @user.followers.count.to_s, response.body
 

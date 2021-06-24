@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class PasswordResetsTest < ActionDispatch::IntegrationTest
   def setup
@@ -48,7 +48,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     user.email
 
     # Invalid password & confirmation
-    patch password_reset_path(user.reset_token), params: { email: user.email, user: { password: 'foobaz', password_confirmation: 'barquux' }}
+    patch password_reset_path(user.reset_token), params: { email: user.email, user: { password: 'foobaz', password_confirmation: 'barquux' } }
     assert_select 'div#error_explanation'
 
     # Empty password

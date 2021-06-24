@@ -11,7 +11,7 @@ tau_manifesto:
 cat_video:
   content: 'Sad cats are sad: https://youtu.be/PKffm2uI4dk'
   created_at: <%= 2.hours.ago %>
-   user: michael
+  user: michael
 
 most_recent:
   content: 'Writing a short test'
@@ -19,10 +19,10 @@ most_recent:
   user: michael
 
 <% 30.times do |n| %>
-  micropost_<%= n %>:
-    content: <%= Faker::Lorem.sentence(word_count: 5) %>
-    created_at: <%= 42.days.ago %>
-    user: michael
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+  user: michael
 <% end %>
 
 ants:
@@ -31,7 +31,7 @@ ants:
   user: archer
 
 zone:
-  content: 'Danger zone!'
+  content: "Danger zone!"
   created_at: <%= 3.days.ago %>
   user: archer
 

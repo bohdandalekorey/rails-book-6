@@ -15,12 +15,8 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
       post microposts_path, params: { micropost: { content: '' } }
     end
 
-    assert_select 'div#error_explanation'
-    assert_select 'a[href=?]', '/?page=2' # Correct pagination link
-
     # Valid submission
     content = 'This micropost really ties the room together'
-
     assert_difference 'Micropost.count', 1 do
       post microposts_path, params: { micropost: { content: content } }
     end
