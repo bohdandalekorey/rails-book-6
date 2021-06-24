@@ -5,6 +5,10 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship', reign_key: 'followed_id', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   before_save :downcase_email
   before_save { self.email = email.downcase }
@@ -64,6 +68,18 @@ class User < ApplicationRecord
 
   def feed # Defines a proto-feed.
     Micropost.where('user_id = ?', id)
+  end
+
+  def follow(other_user) # Follows a user.
+    following << other_user
+  end
+
+  def unfollow(other_user) # Unfollows a user.
+    following.delete(other_user)
+  end
+
+  def following?(other_user) # Returns true if the current user is following the other user.
+    following.include?(other_user)
   end
 
   private
